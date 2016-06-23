@@ -1,8 +1,7 @@
 class CreateAlarms < ActiveRecord::Migration[5.0]
   def change
     create_table :alarms do |t|
-      t.references :user, foreign_key: true
-      t.references :schedule, foreign_key: true
+      t.references :user, foreign_key: true, index: true
       t.datetime :departs_at
       t.integer :travel_method
       t.integer :travel_delay
