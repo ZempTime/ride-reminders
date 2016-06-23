@@ -7,7 +7,7 @@ class CreateAlarms < ActiveRecord::Migration[5.0]
       t.integer :travel_method
       t.integer :travel_delay
       t.integer :heads_up_delay
-      t.text :recurs_on
+      t.text :recurs_on, array: true, default: []
 
       t.timestamps
     end
