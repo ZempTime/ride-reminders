@@ -1,5 +1,8 @@
 class AlarmsController < ApplicationController
   def index
-    flash[:notice] = "Nice!!"
+  end
+
+  def new
+    @alarm = Alarm.new
   end
 end

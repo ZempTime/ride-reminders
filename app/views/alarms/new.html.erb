@@ -1,0 +1,26 @@
+<%= form_for @alarm do |f|%>
+
+  <h3>Your Schedule</h3>
+
+  <p>
+    My <%= f.select :travel_method, options_for_select(TravelMethod.options, prompt: "Ride Type") %>
+    leaves every #{recurs_on},
+    starting at #{starts_at} in the #{am/pm}.
+  </p>
+  <p>
+    It arrives every #{interval} minutes.
+  </p>
+
+  <h3>Your Reminders</h3>
+  <p>
+    I want to leave at #{departs_at} every #{recurs_on}.
+  </p>
+  <p>
+    It takes me #{travel_delay} minutes to get to my #{selected_travel_method}.
+  </p>
+  <p>
+    Alert me #{heads_up_delay} minutes before I should leave to catch my ride.
+  </p>
+
+  <%= f.submit "Set Reminder" %>
+<% end %>
