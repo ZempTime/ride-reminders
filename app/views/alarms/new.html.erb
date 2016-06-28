@@ -6,7 +6,6 @@
     My <%= f.select :travel_method, options_for_select(TravelMethod.options, prompt: "Ride Type") %>
     leaves every,
     <div class="checkbox" data-behavior="weekdays">
-      <%= f.hidden_field :recurs_on, [0,0,0,0,0,0,0,0] %>
       <% weekdays.each_with_index do |dayname, i| %>
         <label for="<%= dayname %>">
           <%= check_box_tag "monday", nil, false, data: {weekday_index: i} %>
