@@ -1,34 +1,28 @@
 <%= form_for @alarm do |f|%>
+  <%= f.fields_for :schedule do |sf| %>
 
   <h3>Your Schedule</h3>
 
   <p>
     My <%= f.select :travel_method, options_for_select(TravelMethod.options, prompt: "Ride Type") %>
-    leaves every,
-    <div class="checkbox" data-behavior="weekdays">
-      <% weekdays.each_with_index do |dayname, i| %>
-        <label for="<%= dayname %>">
-          <%= check_box_tag "monday", nil, false, data: {weekday_index: i} %>
-          <%= dayname %>
-        </label>
-      <% end %>
-    </div>
-    starting at #{starts_at} in the #{am/pm}.
+    leaves every, <%= sf.collection_check_boxes(:days, weekdays, :index, :name) %>
+    starting at <%= sf.time_select :starts_at %>
   </p>
   <p>
-    It arrives every #{interval} minutes.
+    It arrives every <%= sf.number_field :interval, placeholder: "3" %> minutes.
   </p>
 
   <h3>Your Reminders</h3>
   <p>
-    I want to leave at #{departs_at} every #{recurs_on}.
+    I want to leave at <%= f.time_select :departs_at %> every <%= f.collection_check_boxes(:recurs_on, weekdays, :index, :name) %>
   </p>
   <p>
-    It takes me #{travel_delay} minutes to get to my #{selected_travel_method}.
+    It takes me <%= f.number_field :travel_delay, placeholder: 2 %> minutes to get to my ride.
   </p>
   <p>
-    Alert me #{heads_up_delay} minutes before I should leave to catch my ride.
+    Alert me <%= f.number_field :heads_up_delay, placeholder: 2 %> minutes before I should leave to catch my ride.
   </p>
 
   <%= f.submit "Set Reminder" %>
+  <% end %>
 <% end %>
