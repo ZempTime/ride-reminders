@@ -14,7 +14,7 @@
 
   <h3>Your Reminders</h3>
   <p>
-    I want to leave at <%= f.time_select :departs_at %> every <%= f.collection_check_boxes(:recurs_on, weekdays, :index, :name) %>
+    I want to leave at <%= f.time_select :departs_at %>.
   </p>
   <p>
     It takes me <%= f.number_field :travel_delay, placeholder: 2 %> minutes to get to my ride.
