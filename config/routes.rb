@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "accounts/sessions", registrations: "accounts/registrations", passwords: "accounts/passwords" }
 
-  resources :alarms
+  resources :reminders
+  resources :ride_schedules
 
-  root to: "alarms#index"
+  root to: "reminders#index"
 end

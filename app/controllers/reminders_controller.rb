@@ -1,8 +1,8 @@
-class AlarmsController < ApplicationController
+class RemindersController < ApplicationController
   def index
   end
 
   def new
-    @alarm = Alarm.new
+    @reminder = Reminder.new
   end
 end
