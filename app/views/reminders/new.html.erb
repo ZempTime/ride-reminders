@@ -1,18 +1,16 @@
 <%= form_for @reminder do |f|%>
-  <%= f.fields_for :schedule do |sf| %>
+  <p>Want more options? We've got you covered - later on, you'll be able to extensively customize this.</p>
+  <%= f.fields_for :ride_schedule do |sf| %>
 
-  <h3>Your Schedule</h3>
+  <h3>Your Ride Schedule</h3>
 
   <p>
     My <%= f.select :travel_method, options_for_select(TravelMethod.options, prompt: "Ride Type") %>
-    leaves every, <%= sf.collection_check_boxes(:days, weekdays, :index, :name) %>
+    leaves every <%= sf.number_field :interval, placeholder: "3" %> minutes
     starting at <%= sf.time_select :starts_at %>
   </p>
-  <p>
-    It arrives every <%= sf.number_field :interval, placeholder: "3" %> minutes.
-  </p>
 
-  <h3>Your Reminders</h3>
+  <h3>Your Reminder</h3>
   <p>
     I want to leave at <%= f.time_select :departs_at %>.
   </p>
