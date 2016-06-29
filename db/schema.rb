@@ -10,34 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623000705) do
+ActiveRecord::Schema.define(version: 20160629153249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "alarms", force: :cascade do |t|
+  create_table "reminders", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "ride_schedule_id"
     t.datetime "departs_at"
     t.integer  "travel_method"
     t.integer  "travel_delay"
     t.integer  "heads_up_delay"
-    t.text     "recurs_on",      default: [],              array: true
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.index ["user_id"], name: "index_alarms_on_user_id", using: :btree
+    t.text     "recurs_on"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["ride_schedule_id"], name: "index_reminders_on_ride_schedule_id", using: :btree
+    t.index ["user_id"], name: "index_reminders_on_user_id", using: :btree
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "alarm_id"
+  create_table "ride_schedules", force: :cascade do |t|
     t.integer  "starts_at"
     t.integer  "interval"
     t.integer  "period"
-    t.text     "days",       default: [],              array: true
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.index ["alarm_id"], name: "index_schedules_on_alarm_id", using: :btree
-    t.index ["user_id"], name: "index_schedules_on_user_id", using: :btree
+    t.text     "days"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,7 +55,6 @@ ActiveRecord::Schema.define(version: 20160623000705) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "alarms", "users"
-  add_foreign_key "schedules", "alarms"
-  add_foreign_key "schedules", "users"
+  add_foreign_key "reminders", "ride_schedules"
+  add_foreign_key "reminders", "users"
 end

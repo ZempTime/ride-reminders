@@ -1,4 +1,4 @@
 class Reminder < ApplicationRecord
   belongs_to :user
-  belongs_to :schedule
+  belongs_to :ride_schedule
 end
