@@ -4,6 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :reminders
-  has_many :ride_schedules, through: :reminders
+  has_many :alarms
 end
