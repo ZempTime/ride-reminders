@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704014628) do
+ActiveRecord::Schema.define(version: 20160704015834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ride_schedules", force: :cascade do |t|
+    t.integer  "travel_method_id"
+    t.time     "starts_at"
+    t.integer  "interval_minutes"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["travel_method_id"], name: "index_ride_schedules_on_travel_method_id", using: :btree
+  end
 
   create_table "travel_methods", force: :cascade do |t|
     t.string "name"
@@ -53,4 +62,5 @@ ActiveRecord::Schema.define(version: 20160704014628) do
     t.index ["owner_type", "owner_id"], name: "index_weeks_on_owner_type_and_owner_id", using: :btree
   end
 
+  add_foreign_key "ride_schedules", "travel_methods"
 end
