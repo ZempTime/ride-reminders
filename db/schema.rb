@@ -10,32 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629153249) do
+ActiveRecord::Schema.define(version: 20160704012843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "reminders", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "ride_schedule_id"
-    t.datetime "departs_at"
-    t.integer  "travel_method"
-    t.integer  "travel_delay"
-    t.integer  "heads_up_delay"
-    t.text     "recurs_on"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["ride_schedule_id"], name: "index_reminders_on_ride_schedule_id", using: :btree
-    t.index ["user_id"], name: "index_reminders_on_user_id", using: :btree
-  end
-
-  create_table "ride_schedules", force: :cascade do |t|
-    t.integer  "starts_at"
-    t.integer  "interval"
-    t.integer  "period"
-    t.text     "days"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "travel_methods", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,6 +37,4 @@ ActiveRecord::Schema.define(version: 20160629153249) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "reminders", "ride_schedules"
-  add_foreign_key "reminders", "users"
 end
