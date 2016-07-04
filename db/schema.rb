@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704012843) do
+ActiveRecord::Schema.define(version: 20160704014628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,22 @@ ActiveRecord::Schema.define(version: 20160704012843) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "weeks", force: :cascade do |t|
+    t.boolean  "sunday",     default: false
+    t.boolean  "monday",     default: false
+    t.boolean  "tuesday",    default: false
+    t.boolean  "wednesday",  default: false
+    t.boolean  "thursday",   default: false
+    t.boolean  "friday",     default: false
+    t.boolean  "saturday",   default: false
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["owner_id", "owner_type"], name: "index_weeks_on_owner_id_and_owner_type", using: :btree
+    t.index ["owner_type", "owner_id"], name: "index_weeks_on_owner_type_and_owner_id", using: :btree
   end
 
 end
