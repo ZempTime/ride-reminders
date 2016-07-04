@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704020945) do
+ActiveRecord::Schema.define(version: 20160704021435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20160704020945) do
     t.index ["ride_schedule_id"], name: "index_alarms_on_ride_schedule_id", using: :btree
     t.index ["travel_method_id"], name: "index_alarms_on_travel_method_id", using: :btree
     t.index ["user_id"], name: "index_alarms_on_user_id", using: :btree
+  end
+
+  create_table "reminders", force: :cascade do |t|
+    t.datetime "notify_at"
+    t.integer  "status",     default: 0
+    t.integer  "alarm_id"
+    t.string   "message"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["alarm_id"], name: "index_reminders_on_alarm_id", using: :btree
   end
 
   create_table "ride_schedules", force: :cascade do |t|
@@ -79,5 +89,6 @@ ActiveRecord::Schema.define(version: 20160704020945) do
   add_foreign_key "alarms", "ride_schedules"
   add_foreign_key "alarms", "travel_methods"
   add_foreign_key "alarms", "users"
+  add_foreign_key "reminders", "alarms"
   add_foreign_key "ride_schedules", "travel_methods"
 end
