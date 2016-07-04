@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20160704021435) do
 
   create_table "alarms", force: :cascade do |t|
     t.integer  "user_id"
-    t.time     "departs_at"
-    t.integer  "travel_delay_minutes"
-    t.integer  "heads_up_delay_minutes"
+    t.time     "departs_at",             null: false
+    t.integer  "travel_delay_minutes",   null: false
+    t.integer  "heads_up_delay_minutes", null: false
     t.integer  "travel_method_id"
     t.integer  "ride_schedule_id"
     t.datetime "created_at",             null: false
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20160704021435) do
   end
 
   create_table "reminders", force: :cascade do |t|
-    t.datetime "notify_at"
+    t.datetime "notify_at",              null: false
     t.integer  "status",     default: 0
     t.integer  "alarm_id"
-    t.string   "message"
+    t.string   "message",                null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["alarm_id"], name: "index_reminders_on_alarm_id", using: :btree
@@ -41,16 +41,16 @@ ActiveRecord::Schema.define(version: 20160704021435) do
 
   create_table "ride_schedules", force: :cascade do |t|
     t.integer  "travel_method_id"
-    t.time     "starts_at"
-    t.integer  "interval_minutes"
+    t.time     "starts_at",        null: false
+    t.integer  "interval_minutes", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["travel_method_id"], name: "index_ride_schedules_on_travel_method_id", using: :btree
   end
 
   create_table "travel_methods", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name",        null: false
+    t.string "description", null: false
   end
 
   create_table "users", force: :cascade do |t|
