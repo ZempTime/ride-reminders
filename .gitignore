@@ -15,4 +15,4 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-app/models/.DS_Store
+.DS_Store
