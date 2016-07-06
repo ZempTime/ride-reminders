@@ -35,6 +35,16 @@ class RideSchedulesController < ApplicationController
     end
   end
 
+  def destroy
+    load_ride_schedule
+
+    if @ride_schedule.destroy
+      redirect_to ride_schedules_path
+    else
+      render :edit, notice: "We were unable to process your request."
+    end
+  end
+
   private
     def ride_schedule_scope
       RideSchedule

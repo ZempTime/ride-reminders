@@ -1,3 +1,5 @@
 <h1>Editing <%= @ride_schedule.title %></h1>
 
 <%= render "form" %>
+
+<%= link_to "delete", ride_schedule_path(@ride_schedule), method: :delete, data: {confirm: "This will destroy all the alarms and reminders you have set up for this schedule. Are you sure?"} %>
