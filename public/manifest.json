@@ -1,0 +1,13 @@
+{
+  "name": "Ride Reminder",
+  "short_name": "Ride Reminder",
+  "icons": [{
+    "src": "images/alarms192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }],
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "208404299222",
+  "gcm_user_visible_only": true
+}
