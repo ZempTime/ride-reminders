@@ -1,0 +1,7 @@
+<h1>Your Ride Schedules</h1>
+
+<% unless @ride_schedules&.any? %>
+  <p>You don't have any ride schedules. You should feel terrible about this</p>
+<% end %>
+
+<%= link_to "+ New Ride Schedule", new_ride_schedule_path %>

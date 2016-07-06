@@ -1,0 +1,26 @@
+<h1>New Ride Schedule</h1>
+
+<%= form_for @ride_schedule do |f| %>
+  <% if @ride_schedule.errors.any? %>
+    <ul>
+      <% @ride_schedule.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p>
+    My <%= f.select :travel_method_id, options_from_collection_for_select(TravelMethod.all, 'id', 'name') %>
+    leaves every <%= f.number_field :interval_minutes, placeholder: "3" %> minutes
+    starting at <%= f.time_select :starts_at, {ampm: true} %>
+  </p>
+  <%= f.fields_for :week do |wf| %>
+    <% Date::DAYNAMES.each do |day| %>
+      <%= wf.check_box "#{day.downcase.to_sym}" %>
+      <%= wf.label "#{day.downcase.to_sym}" %>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

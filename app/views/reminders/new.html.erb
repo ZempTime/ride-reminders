@@ -2,25 +2,28 @@
   <p>Want more options? We've got you covered - later on, you'll be able to extensively customize this.</p>
   <%= f.fields_for :ride_schedule do |sf| %>
 
-  <h3>Your Ride Schedule</h3>
+    <h3>Your Ride Schedule</h3>
 
-  <p>
+    <p>
     My <%= f.select :travel_method, options_for_select(TravelMethod.options, prompt: "Ride Type") %>
-    leaves every <%= sf.number_field :interval, placeholder: "3" %> minutes
-    starting at <%= sf.time_select :starts_at %>
+  leaves every <%= sf.number_field :interval, placeholder: "3" %> minutes
+  starting at <%= sf.time_select :starts_at %>
   </p>
 
   <h3>Your Reminder</h3>
   <p>
-    I want to leave at <%= f.time_select :departs_at %>.
+  I want to leave at <%= f.time_select :departs_at %>.
   </p>
   <p>
-    It takes me <%= f.number_field :travel_delay, placeholder: 2 %> minutes to get to my ride.
+  It takes me <%= f.number_field :travel_delay, placeholder: 2 %> minutes to get to my ride.
   </p>
   <p>
-    Alert me <%= f.number_field :heads_up_delay, placeholder: 2 %> minutes before I should leave to catch my ride.
+  Alert me <%= f.number_field :heads_up_delay, placeholder: 2 %> minutes before I should leave to catch my ride.
   </p>
 
   <%= f.submit "Set Reminder" %>
-  <% end %>
 <% end %>
+<% end %>
+
+
+
