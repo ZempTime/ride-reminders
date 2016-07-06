@@ -10,6 +10,8 @@ class Alarm < ApplicationRecord
 
   accepts_nested_attributes_for :week, allow_destroy: true, reject_if: :all_blank
 
+  after_save :set_reminders
+
   def travel_method
     ride_schedule.travel_method
   end
@@ -25,4 +27,15 @@ class Alarm < ApplicationRecord
   def abbreviated_weekdays
     week.abbreviated_weekdays
   end
+
+  private
+    def set_reminders
+      SetAlarmRemindersForTodayJob.perform_later(alarm)
+    end
+
+    def cancel_existing_reminders
+    end
+
+    def create_new_reminders
+    end
 end
