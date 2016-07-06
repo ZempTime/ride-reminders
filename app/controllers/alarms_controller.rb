@@ -15,6 +15,11 @@ class AlarmsController < ApplicationController
     @alarm.build_week
   end
 
+  def edit
+    load_alarm
+    @ride_schedules = ride_schedule_scope.all
+  end
+
   def create
     @alarm = Alarm.new alarm_params
 
@@ -23,6 +28,26 @@ class AlarmsController < ApplicationController
     else
       @ride_schedules = ride_schedule_scope.all
       render :new
+    end
+  end
+
+  def update
+    load_alarm
+
+    if @alarm.update alarm_params
+      redirect_to @alarm
+    else
+      @ride_schedules = ride_schedule_scope.all
+      render :edit
+    end
+  end
+
+  def destroy
+    load_alarm
+    if @alarm.destroy
+      redirect_to alarms_path
+    else
+      render :edit, notice: "We were unable to process your request."
     end
   end
 

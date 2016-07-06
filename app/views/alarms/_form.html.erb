@@ -1,0 +1,38 @@
+<%= form_for @alarm do |f| %>
+  <% if @alarm.errors.any? %>
+    <ul>
+      <% @alarm.errors.full_messages.each do |msg| %>
+        <li>
+          <%= msg %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    I want to leave at <%= f.time_select :departs_at, {ampm: true} %>
+  </p>
+  <p>
+    It takes me <%= f.number_field :travel_delay_minutes, placeholder: 7 %> minutes to get to my ride.
+  </p>
+  <p>
+    Alert me <%= f.number_field :heads_up_delay_minutes, placeholder: 10 %> minutes before I should leave to catch my ride.
+  </p>
+
+  <p>
+    <%= f.label :ride_schedule_id, "Using the schedule for:" %>
+    <%= f.select :ride_schedule_id, options_from_collection_for_select(@ride_schedules, 'id', 'title', selected: (params[:ride_schedule_id] || f.object.ride_schedule_id) ) %>
+  </p>
+
+  <p>Repeat every:</p>
+  <p>
+    <%= f.fields_for :week do |wf| %>
+      <% Date::DAYNAMES.each do |day| %>
+        <%= wf.check_box "#{day.downcase.to_sym}" %>
+        <%= wf.label "#{day.downcase.to_sym}" %>
+      <% end %>
+    <% end %>
+  </p>
+
+  <%= f.submit %>
+<% end %>
