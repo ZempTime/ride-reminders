@@ -6,9 +6,9 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <a class="nav-link <%= active?(:alarms) %>" href="#">
-        <%= image_tag asset_path("icons/alarms.png"), size: "50x50" %>  Reminders
-      </a>
+      <%= link_to alarms_path, class: "nav-link #{active?(:alarms)}" do %>
+        <%= image_tag asset_path("icons/alarms.png"), size: "50x50" %>  Alarms
+      <% end %>
     </li>
     <li class="nav-item">
       <%= link_to ride_schedules_path, class: "nav-link #{active?(:ride_schedules)}" do %>

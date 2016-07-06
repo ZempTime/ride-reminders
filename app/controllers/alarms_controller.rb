@@ -2,6 +2,11 @@ class AlarmsController < ApplicationController
   before_action :ensure_ride_schedule_exists, only: [:new]
 
   def index
+    @alarms = alarm_scope.all
+  end
+
+  def show
+    load_alarm
   end
 
   def new
@@ -25,6 +30,10 @@ class AlarmsController < ApplicationController
     def alarm_params
       params.require(:alarm).permit(:departs_at, :ride_schedule_id, :travel_delay_minutes, :heads_up_delay_minutes, :travel_method_id, :ride_schedule_id,
                                     week_attributes: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday])
+    end
+
+    def load_alarm
+      @alarm = alarm_scope.find(params[:id])
     end
 
     def alarm_scope

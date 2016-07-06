@@ -1,0 +1,23 @@
+<h1>Alarm for <%= @alarm.title %></h1>
+
+<p>
+  You want to depart at <%= @alarm.departs_at_display %> via <%= @alarm.travel_method.name %>
+</p>
+
+<p>
+  Travelling there takes <%= @alarm.travel_delay_minutes %> minutes, and you want <%= @alarm.heads_up_delay_minutes %> minutes heads up.
+</p>
+
+<p>
+  This alarm is set to use the schedule for <%= @alarm.ride_schedule.title %>
+</p>
+
+<p>
+  Repeated on: <br />
+  <% Date::DAYNAMES.each do |day| %>
+    <%= check_box_tag "#{day.downcase.to_sym}", nil, @alarm.week.send(day.downcase), disabled: true %>
+    <%= label_tag "#{day.downcase.to_sym}" %>
+  <% end %>
+</p>
+
+<%= link_to "edit", edit_alarm_path(@alarm) %>

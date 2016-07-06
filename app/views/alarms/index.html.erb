@@ -1,0 +1,18 @@
+<h1>Your Alarms</h1>
+
+<ul>
+  <% @alarms.each do |alarm| %>
+    <li>
+      <%= link_to alarm.title, alarm_path(alarm) %>
+    </li>
+  <% end %>
+</ul>
+<% unless @alarms.any? %>
+  <p>
+    You don't have any alarms! What the heck
+  </p>
+<% end %>
+
+<p>
+  <%= link_to "new alarm", new_alarm_path %>
+</p>
