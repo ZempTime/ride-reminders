@@ -12,6 +12,10 @@ class RideSchedulesController < ApplicationController
     @ride_schedule.build_week
   end
 
+  def edit
+    load_ride_schedule
+  end
+
   def create
     @ride_schedule = ride_schedule_scope.new ride_schedule_params
 
@@ -19,6 +23,15 @@ class RideSchedulesController < ApplicationController
       redirect_to @ride_schedule
     else
       render :new
+    end
+  end
+
+  def update
+    load_ride_schedule
+    if @ride_schedule.update ride_schedule_params
+      redirect_to @ride_schedule
+    else
+      render :edit
     end
   end
 

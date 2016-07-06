@@ -1,5 +1,13 @@
 <h1>Your Ride Schedules</h1>
 
+<ul>
+  <% @ride_schedules.each do |ride_schedule| %>
+    <li>
+      <%= link_to ride_schedule.title, ride_schedule %>
+    </li>
+  <% end %>
+</ul>
+
 <% unless @ride_schedules&.any? %>
   <p>You don't have any ride schedules. You should feel terrible about this</p>
 <% end %>

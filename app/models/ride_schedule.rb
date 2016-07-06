@@ -9,7 +9,7 @@ class RideSchedule < ApplicationRecord
   accepts_nested_attributes_for :week, allow_destroy: true, reject_if: :all_blank
 
   def title
-    "#{travel_method.name} - #{abbreviated_weekdays}"
+    "#{travel_method.name} - #{abbreviated_weekdays} #{starts_at.strftime("%p")}"
   end
 
   def abbreviated_weekdays
