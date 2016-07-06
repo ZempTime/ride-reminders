@@ -1,0 +1,16 @@
+<h1><%= @ride_schedule.title %></h1>
+
+<p>
+  Your <%= @ride_schedule.travel_method.name %> leaves every
+  <%= @ride_schedule.interval_minutes %> minutes starting at <%= @ride_schedule.starts_at.strftime("%I:%M %P") %>
+</p>
+
+<p>
+  <% Date::DAYNAMES.each do |day| %>
+    <%= check_box_tag "#{day.downcase.to_sym}", nil, @ride_schedule.week.send(day.downcase), disabled: true %>
+    <%= label_tag "#{day.downcase.to_sym}" %>
+  <% end %>
+</p>
+
+<%= link_to "edit", edit_ride_schedule_path(@ride_schedule) %> |
+<%= link_to "new alarm", new_alarm_path(ride_schedule_id: @ride_schedule.id) %>
