@@ -37,5 +37,6 @@ class Alarm < ApplicationRecord
     end
 
     def create_new_reminders
+      CreateAlarmReminders.new(self).call
     end
 end
