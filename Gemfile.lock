@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/excid3/go_errors-rubygem.git
+  revision: 769640614eeb0300b0ec56f22e0e9b5059ca9c40
+  specs:
+    go_errors (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -190,6 +196,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise (~> 4.1, >= 4.1.1)
+  go_errors!
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)

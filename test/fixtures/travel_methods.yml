@@ -1,0 +1,40 @@
+zero:
+  id: 0
+  name: 'Tram, Streetcar, Light rail'
+  description: 'Any light rail or street level system within a metropolitan area.'
+one:
+  id: 1
+  name: 'Subway, Metro'
+  description: 'Any underground rail system within a metropolitan area.'
+two:
+  id: 2
+  name: 'Rail'
+  description: 'Used for intercity or long-distance travel.'
+three:
+  id: 3
+  name: 'Bus'
+  description: 'Used for short- and long-distance bus routes.'
+four:
+  id: 4
+  name: 'Ferry'
+  description: 'Used for short- and long-distance boat service.'
+five:
+  id: 5
+  name: 'Cable car'
+  description: 'Used for street-level cable cars where the cable runs beneath the car.'
+six:
+  id: 6
+  name: 'Gondola, Suspended cable car'
+  description: 'Typically used for aerial cable cars where the car is suspended from the cable.'
+seven:
+  id: 7
+  name: 'Funicular'
+  description: 'Any rail system designed for steep inclines.'
+eight:
+  id: 8
+  name: 'Car'
+  description: 'Personal vehicle.'
+nine:
+  id: 9
+  name: 'Bike'
+  description: 'Personal Bike.'
