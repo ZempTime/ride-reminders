@@ -1,23 +1,19 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+week_for_ride_schedule_one:
   sunday: false
-  monday: false
-  tuesday: false
-  wednesday: false
-  thursday: false
-  friday: false
+  monday: true
+  tuesday: true
+  wednesday: true
+  thursday: true
+  friday: true
   saturday: false
-  owner: one
-  owner_type: Owner
+  owner: ride_schedule_one (RideSchedule)
 
-two:
+week_for_alarm_one:
   sunday: false
-  monday: false
+  monday: true
   tuesday: false
-  wednesday: false
+  wednesday: true
   thursday: false
-  friday: false
+  friday: true
   saturday: false
-  owner: two
-  owner_type: Owner
+  owner: alarm_one (Alarm)
