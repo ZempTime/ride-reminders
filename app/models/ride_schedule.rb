@@ -15,4 +15,14 @@ class RideSchedule < ApplicationRecord
   def abbreviated_weekdays
     week.abbreviated_weekdays
   end
+
+  def next_departure(departs_at)
+    raise InvalidTimeError unless departs_at > starts_at
+
+    departure = starts_at
+    until departure >= starts_at
+      departure += interval.minutes
+    end
+    return departure
+  end
 end
