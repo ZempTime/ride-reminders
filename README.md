@@ -1,24 +1,16 @@
-# README
+# Terminal Navigation Commands
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```ruby
+pwd - print working directory, ex: /Users/Joseph
 
-Things you may want to cover:
+cd - change directory
 
-* Ruby version
+cd code/ridereminder # this tab autocompletes!
 
-* System dependencies
+ls - lists stuff
+```
 
-* Configuration
+# Database Stuff
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```ruby
+```
