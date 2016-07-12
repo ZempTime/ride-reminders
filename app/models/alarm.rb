@@ -28,12 +28,22 @@ class Alarm < ApplicationRecord
     week.abbreviated_weekdays
   end
 
+  def travel_delay
+    travel_delay_minutes.minutes
+  end
+
+  def heads_up_delay
+    heads_up_delay_minutes.minutes
+  end
+
   private
     def set_reminders
-      SetAlarmRemindersForTodayJob.perform_later(alarm)
+      cancel_existing_reminders
+      create_new_reminders
     end
 
     def cancel_existing_reminders
+      CancelAlarmReminders.new(self).call
     end
 
     def create_new_reminders

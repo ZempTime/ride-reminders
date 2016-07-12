@@ -4,6 +4,6 @@ class CancelAlarmReminders
   end
 
   def call
-    # cancel existing reminders!
+    @alarm.reminders.update_all status: "cancelled"
   end
 end
