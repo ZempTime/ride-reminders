@@ -7,9 +7,9 @@ class Notifier
     client = Twilio::REST::Client.new
 
     client.messages.create(
-      from: '+13145969094',
-      to: reminder.user.phone_number,
-      body: reminder.message
+      from: '+13142663572',
+      to: @reminder.user.phone_number,
+      body: @reminder.message
     )
   end
 end

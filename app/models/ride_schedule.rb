@@ -1,5 +1,6 @@
 class RideSchedule < ApplicationRecord
   belongs_to :travel_method
+  belongs_to :user
   has_one :week, as: :owner, dependent: :destroy
   has_many :alarms, dependent: :destroy
 

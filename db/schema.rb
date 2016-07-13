@@ -40,12 +40,14 @@ ActiveRecord::Schema.define(version: 20160704021435) do
   end
 
   create_table "ride_schedules", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "travel_method_id"
     t.time     "starts_at",        null: false
     t.integer  "interval_minutes", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["travel_method_id"], name: "index_ride_schedules_on_travel_method_id", using: :btree
+    t.index ["user_id"], name: "index_ride_schedules_on_user_id", using: :btree
   end
 
   create_table "travel_methods", force: :cascade do |t|
@@ -92,4 +94,5 @@ ActiveRecord::Schema.define(version: 20160704021435) do
   add_foreign_key "alarms", "users"
   add_foreign_key "reminders", "alarms"
   add_foreign_key "ride_schedules", "travel_methods"
+  add_foreign_key "ride_schedules", "users"
 end

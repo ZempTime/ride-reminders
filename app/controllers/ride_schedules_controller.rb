@@ -47,7 +47,7 @@ class RideSchedulesController < ApplicationController
 
   private
     def ride_schedule_scope
-      RideSchedule
+      current_user.ride_schedules
     end
 
     def ride_schedule_params

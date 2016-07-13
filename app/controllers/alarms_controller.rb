@@ -21,7 +21,7 @@ class AlarmsController < ApplicationController
   end
 
   def create
-    @alarm = Alarm.new alarm_params
+    @alarm = alarm_scope.new alarm_params
 
     if @alarm.save
       redirect_to @alarm
@@ -62,7 +62,7 @@ class AlarmsController < ApplicationController
     end
 
     def alarm_scope
-      Alarm
+      current_user.alarms
     end
 
     def ensure_ride_schedule_exists

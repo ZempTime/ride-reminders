@@ -8,7 +8,7 @@ class Reminder < ApplicationRecord
   after_create :schedule_job
 
   def schedule_job
-    SendReminderJob.perform_at(notify_at, self)
+    SendReminderJob.set(wait_until: notify_at).perform_later(self)
   end
 
   def user
