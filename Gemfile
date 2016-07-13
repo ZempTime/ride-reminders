@@ -20,7 +20,6 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'quiet_assets'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -29,6 +28,7 @@ gem 'devise', '~> 4.1', '>= 4.1.1'
 gem 'sidekiq'
 gem "go_errors", github: "excid3/go_errors-rubygem"
 gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
+gem 'phony_rails', '~> 0.14.2'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

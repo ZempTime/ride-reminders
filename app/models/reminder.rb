@@ -10,4 +10,8 @@ class Reminder < ApplicationRecord
   def schedule_job
     SendReminderJob.perform_at(notify_at, self)
   end
+
+  def user
+    alarm.user
+  end
 end
