@@ -25,7 +25,7 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'devise', '~> 4.1', '>= 4.1.1'
+gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'sidekiq'
 gem "go_errors", github: "excid3/go_errors-rubygem"
 
