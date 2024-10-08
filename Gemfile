@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.0', '>= 6.0.3.5'
+gem 'rails', '~> 7.0', '>= 7.0.0'
 gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0', '>= 5.0.8'
+gem 'puma', '~> 5.6', '>= 5.6.9'
+gem 'sass-rails', '~> 6.0', '>= 6.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2.2'
 
@@ -24,7 +24,7 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '~> 5.0.0.0'
 gem 'devise', '~> 4.7', '>= 4.7.0'
 gem 'sidekiq'
 gem "go_errors", github: "excid3/go_errors-rubygem"
